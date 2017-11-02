@@ -1,0 +1,15 @@
+//Dynamische liste
+https://stackoverflow.com/questions/1917773/dynamic-listview-in-android-app#1917861
+
+//Layouts
+https://developer.android.com/reference/android/R.layout.html
+
+//List adapter views
+https://developer.android.com/guide/topics/ui/declaring-layout.html#AdapterViews
+
+//list
+https://developer.android.com/guide/topics/ui/layout/listview.html
+
+
+//MERKEN
+Activitys sind wie keller automat.

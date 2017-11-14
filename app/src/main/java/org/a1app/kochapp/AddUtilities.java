@@ -40,6 +40,9 @@ public class AddUtilities extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.simple_list, values);
         ListView listView = (ListView) findViewById(R.id.Util_Current_list);
         listView.setAdapter(adapter);
+
+        age = age + 1;
+
     }
 
     //updates the device list
@@ -78,5 +81,11 @@ public class AddUtilities extends AppCompatActivity {
         At this point the program should append the text for each device.
         TODO*/
         Toast.makeText(getApplicationContext(), "Got: " + xml_name, Toast.LENGTH_LONG).show();
+
+        Intent to_first_wiz = new Intent(this, StepWizard.class);
+        startActivity(to_first_wiz);
+
+        sizeof()
+
     }
 }

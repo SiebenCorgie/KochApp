@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addRecipe(View v){
         //open the adding dialog
-        Intent intent = new Intent(this, AddIngredients.class);
+        Intent intent = new Intent(this, StartRecipe.class);
         startActivity(intent);
     }
 

@@ -9,15 +9,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddIngredients extends AppCompatActivity {
-    //The ingredients to be sent as message to the next activity
-    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.ING_TO_UTIL";
+    //The xml to be sent as message to the next activity
+    public static final String EXTRA_XML_FILE = "com.example.myfirstapp.ING_TO_UTIL";
 
     //the displayed list
     public ArrayList<Ingredience> ing_list;
-
+    public String xml_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,12 @@ public class AddIngredients extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.simple_list, values);
         ListView listView = (ListView) findViewById(R.id.Ing_Current_list);
         listView.setAdapter(adapter);
+
+        //get the xml file name from the intent
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(StartRecipe.EXTRA_XML_FILE);
+        //save it to the global one
+        xml_name = message;
     }
 
     //Just cleans the text when a text edit is pressed
@@ -44,7 +49,7 @@ public class AddIngredients extends AppCompatActivity {
     //cleans the text views
     public void clean_texts(){
         EditText ed_name = (EditText) findViewById(R.id.edit_add_what);
-        EditText ed_val = (EditText) findViewById(R.id.Util_add_howMuch);
+        EditText ed_val = (EditText) findViewById(R.id.Ing_ammount);
 
         ed_name.setText("");
         ed_val.setText("");
@@ -59,7 +64,7 @@ public class AddIngredients extends AppCompatActivity {
     public void add_to_list(View v){
 
         EditText ed_name = (EditText) findViewById(R.id.edit_add_what);
-        EditText ed_val = (EditText) findViewById(R.id.Util_add_howMuch);
+        EditText ed_val = (EditText) findViewById(R.id.Ing_ammount);
 
 
 
@@ -83,7 +88,7 @@ public class AddIngredients extends AppCompatActivity {
             values[i] = this.ing_list.get(i).name();
         }
 
-//TODO can be done more nicely
+        //TODO can be done more nicely
         //recreate the adapter
         ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.simple_list, values);
         ListView listView = (ListView) findViewById(R.id.Ing_Current_list);
@@ -92,9 +97,15 @@ public class AddIngredients extends AppCompatActivity {
 
     //collects the incrediens and sends them to the Utilities activity
     public void next(View v){
+        /*TODO
+        At this point the programm should append the text for each ingredient.
+        TODO*/
 
         Intent intent = new Intent(this, AddUtilities.class);
+        intent.putExtra(EXTRA_XML_FILE, xml_name);
         startActivity(intent);
+
+        //Toast.makeText(getApplicationContext(), "Got: " + xml_name, Toast.LENGTH_LONG).show();
     }
 
 }

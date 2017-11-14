@@ -8,4 +8,5 @@
     <string name="Ingredient">Ingredient</string>
     <string name="Amount">Amount</string>
     <string name="Utilities">Utilities</string>
+    <string name="start_recipe">You are about ot start a new recipe! Give it a name.</string>
 </resources>

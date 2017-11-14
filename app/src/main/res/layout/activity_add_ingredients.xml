@@ -35,7 +35,7 @@
         android:layout_marginStart="8dp"
         android:onClick="add_to_list"
         android:text="@string/Add"
-        app:layout_constraintBottom_toTopOf="@+id/Util_add_howMuch"
+        app:layout_constraintBottom_toTopOf="@+id/Ing_ammount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edit_add_what"
         tools:text="@string/Add" />
@@ -52,7 +52,7 @@
         tools:layout_editor_absoluteX="8dp" />
 
     <EditText
-        android:id="@+id/Util_add_howMuch"
+        android:id="@+id/Ing_ammount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -78,7 +78,7 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/Util_add_howMuch"
+        app:layout_constraintBottom_toTopOf="@+id/Ing_ammount"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -86,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:text="@string/Amount"
-        app:layout_constraintBottom_toTopOf="@+id/Util_add_howMuch"
+        app:layout_constraintBottom_toTopOf="@+id/Ing_ammount"
         tools:layout_editor_absoluteX="16dp" />
 
     <TextView

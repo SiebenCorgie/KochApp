@@ -1,0 +1,14 @@
+Write small database to store:
+
+Name,
+picture_path
+xml_path
+
+the xml contanis the dynamic cooking instructions etc to be used at runtime
+the picture path the path for the preview picture
+name is obvious :D
+
+use the xml reader/writer from
+https://www.tutorialspoint.com/android/android_xml_parsers.htm
+or
+https://stackoverflow.com/questions/7373567/how-to-read-and-write-xml-files#7373596

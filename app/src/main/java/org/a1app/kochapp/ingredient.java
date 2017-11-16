@@ -6,13 +6,13 @@ import java.io.Serializable;
  * Created by siebencorgie on 11/9/17.
  */
 
-public class Ingredience implements Serializable{
+public class ingredient implements Serializable{
 
     private String name;
     private String ammount;
 
-    //generates this ingredience
-    Ingredience(String name, String ammount){
+    //generates this ingredient
+    ingredient(String name, String ammount){
         this.name = name;
         this.ammount = ammount;
     }

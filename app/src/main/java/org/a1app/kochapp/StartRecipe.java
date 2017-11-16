@@ -10,12 +10,16 @@ import android.widget.Toast;
 public class StartRecipe extends AppCompatActivity {
 
     //The xml to be sent as message to the next activity
-    public static final String EXTRA_XML_FILE = "com.example.myfirstapp.START_TO_ING";
+    public static final String EXTRA_XML_FILE = "com.example.myfirstapp.XMLFILE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_recipe);
+
+        //print the app location
+        Toast.makeText(getApplicationContext(), "Location: " + getApplicationInfo().dataDir, Toast.LENGTH_LONG);
+
     }
 
     public void onNext(View v){
@@ -27,10 +31,12 @@ public class StartRecipe extends AppCompatActivity {
         At this point the xml file should be created and the first part, (the name) should be
         written inside
         TODO*/
+        XmlHandler handler = new XmlHandler(file_name, getApplicationContext());
 
         Intent go_to_ingredients = new Intent(this, AddIngredients.class);
-        go_to_ingredients.putExtra(EXTRA_XML_FILE, file_name);
+        go_to_ingredients.putExtra(EXTRA_XML_FILE, handler);
         startActivity(go_to_ingredients);
+        finish();
     }
 
     public void onBack(View v){

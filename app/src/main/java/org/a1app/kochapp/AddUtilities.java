@@ -12,14 +12,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class AddUtilities extends AppCompatActivity {
-    //Utility
-    //The xml to be sent as message to the next activity
-    public static final String EXTRA_XML_FILE = "com.example.myfirstapp.UTIL_TO_WIZ";
     //the displayed list
     public ArrayList<String> device_list;
 
     //the xml file
-    String xml_name;
+    XmlHandler xml_file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +25,11 @@ public class AddUtilities extends AppCompatActivity {
 
         //get the xml file name from the intent
         Intent intent = getIntent();
-        String message = intent.getStringExtra(AddIngredients.EXTRA_XML_FILE);
+        Bundle message = intent.getExtras();
+        XmlHandler xml_send = (XmlHandler) message.getSerializable(StartRecipe.EXTRA_XML_FILE);
         //save it to the global one
-        xml_name = message;
+        xml_file = xml_send;
+
         //init the array
         this.device_list = new ArrayList<String>();
 
@@ -40,8 +39,6 @@ public class AddUtilities extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.simple_list, values);
         ListView listView = (ListView) findViewById(R.id.Util_Current_list);
         listView.setAdapter(adapter);
-
-        age = age + 1;
 
     }
 
@@ -68,6 +65,9 @@ public class AddUtilities extends AppCompatActivity {
         this.device_list.add(device_entry);
 
         this.update_list();
+
+        //remove the old word
+        device_entry_edit.setText("");
     }
 
     //closes the activity
@@ -80,12 +80,18 @@ public class AddUtilities extends AppCompatActivity {
         /*TODO
         At this point the program should append the text for each device.
         TODO*/
-        Toast.makeText(getApplicationContext(), "Got: " + xml_name, Toast.LENGTH_LONG).show();
 
+        //now, for each device, add it to the xml
+        for (int i=0; i< this.device_list.size(); i++){
+            this.xml_file.addDevice(this.device_list.get(i));
+        }
+
+
+        /* TODO pass the xml further */
         Intent to_first_wiz = new Intent(this, StepWizard.class);
+        to_first_wiz.putExtra(StartRecipe.EXTRA_XML_FILE, xml_file);
         startActivity(to_first_wiz);
-
-        sizeof()
+        finish();
 
     }
 }

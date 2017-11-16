@@ -3,6 +3,7 @@ package org.a1app.kochapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Xml;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -11,12 +12,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class AddIngredients extends AppCompatActivity {
-    //The xml to be sent as message to the next activity
-    public static final String EXTRA_XML_FILE = "com.example.myfirstapp.ING_TO_UTIL";
-
     //the displayed list
-    public ArrayList<Ingredience> ing_list;
-    public String xml_name;
+    public ArrayList<ingredient> ing_list;
+    //the current xml file
+    public XmlHandler xml_file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,7 @@ public class AddIngredients extends AppCompatActivity {
 
         //init the list
         //TODO duno if needed
-        this.ing_list = new ArrayList<Ingredience>();
+        this.ing_list = new ArrayList<ingredient>();
 
         //Populate the view with some dumys
         String[] values = { "Empty!", "Add", "Something"};
@@ -36,9 +35,11 @@ public class AddIngredients extends AppCompatActivity {
 
         //get the xml file name from the intent
         Intent intent = getIntent();
-        String message = intent.getStringExtra(StartRecipe.EXTRA_XML_FILE);
+        Bundle message = intent.getExtras();
+        XmlHandler xml_send = (XmlHandler) message.getSerializable(StartRecipe.EXTRA_XML_FILE);
         //save it to the global one
-        xml_name = message;
+        xml_file = xml_send;
+
     }
 
     //Just cleans the text when a text edit is pressed
@@ -71,7 +72,7 @@ public class AddIngredients extends AppCompatActivity {
         String name = ed_name.getText().toString();
         String val = ed_val.getText().toString();
 
-        Ingredience new_ing = new Ingredience(name, val);
+        ingredient new_ing = new ingredient(name, val);
 
         this.ing_list.add(new_ing);
         //now update the view
@@ -80,7 +81,7 @@ public class AddIngredients extends AppCompatActivity {
         clean_texts();
     }
 
-    //update the ingredience list
+    //update the ingredient list
     public void updateList(){
         //Create the name list
         String[] values = new String[this.ing_list.size()];
@@ -98,13 +99,21 @@ public class AddIngredients extends AppCompatActivity {
     //collects the incrediens and sends them to the Utilities activity
     public void next(View v){
         /*TODO
-        At this point the programm should append the text for each ingredient.
+        At this point the program should append the text for each ingredient.
         TODO*/
 
-        Intent intent = new Intent(this, AddUtilities.class);
-        intent.putExtra(EXTRA_XML_FILE, xml_name);
-        startActivity(intent);
 
+        //now, for each ingredients, add it to the xml
+        for (int i=0; i<this.ing_list.size(); i++){
+            this.xml_file.addingredient(this.ing_list.get(i));
+        }
+
+
+
+        Intent intent = new Intent(this, AddUtilities.class);
+        intent.putExtra(StartRecipe.EXTRA_XML_FILE, xml_file);
+        startActivity(intent);
+        finish();
         //Toast.makeText(getApplicationContext(), "Got: " + xml_name, Toast.LENGTH_LONG).show();
     }
 

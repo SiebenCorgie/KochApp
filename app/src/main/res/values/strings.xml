@@ -11,4 +11,8 @@
     <string name="start_recipe">You are about ot start a new recipe! Give it a name.</string>
     <string name="WizardTitle">Add a cooking step!</string>
     <string name="Finish">Finish</string>
+    <string name="title_activity_working_step">WorkingStep</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

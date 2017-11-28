@@ -21,7 +21,7 @@ import java.io.Serializable;
 public class XmlHandler implements Serializable {
 
     //the directory name for the xml
-    private static String recipe_dir_name = "Recipes";
+    public static String recipe_dir_name = "Recipes";
     private static String file_name = "No_Name.xml";
 
     private static int id_counter;

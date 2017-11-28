@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.a1app.kochapp">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,10 +24,10 @@
         <activity android:name=".AddIngredients" />
         <activity android:name=".AddUtilities" />
         <activity android:name=".StartRecipe" />
-        <activity android:name=".StepWizard"></activity>
+        <activity android:name=".StepWizard" />
+        <activity
+            android:name=".WorkingStep"
+            android:label="@string/title_activity_working_step"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
 
 </manifest>

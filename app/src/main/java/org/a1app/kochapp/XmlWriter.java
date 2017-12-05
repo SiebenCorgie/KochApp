@@ -18,7 +18,7 @@ import java.io.Serializable;
  * reading a recipe.
  */
 
-public class XmlHandler implements Serializable {
+public class XmlWriter implements Serializable {
 
     //the directory name for the xml
     public static String recipe_dir_name = "Recipes";
@@ -28,13 +28,13 @@ public class XmlHandler implements Serializable {
 
 
     /** Contructs a new class by creating a new file with this name **/
-    XmlHandler(String name, Context context){
-        this.file_name = name;
+    XmlWriter(String name, Context context){
+        this.file_name = name + ".xml";
         //and init the counter
         this.id_counter = 0;
 
 
-        this.createFile(name + ".xml");
+        this.createFile();
         //now add the xml header
         this.appendText("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         //now push the recipes tag
@@ -46,10 +46,10 @@ public class XmlHandler implements Serializable {
     }
 
     /** Creates a file with a name in a context */
-    private void createFile(String file_name){
+    private void createFile(){
         //first create the file
         File rec_location = this.getDocumentLocation();
-        File target_file = new File(rec_location, file_name);
+        File target_file = new File(rec_location, this.file_name);
         //now try to create it
         try {
             target_file.createNewFile();

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class StepWizard extends AppCompatActivity {
 
     //the xml file
-    XmlHandler xml_file;
+    XmlWriter xml_file;
     //an empty step
     private CookingStep step = null;
 
@@ -24,7 +24,7 @@ public class StepWizard extends AppCompatActivity {
         //get the xml file name from the intent
         Intent intent = getIntent();
         Bundle message = intent.getExtras();
-        XmlHandler xml_send = (XmlHandler) message.getSerializable(StartRecipe.EXTRA_XML_FILE);
+        XmlWriter xml_send = (XmlWriter) message.getSerializable(StartRecipe.EXTRA_XML_FILE);
         //save it to the global one
         xml_file = xml_send;
 

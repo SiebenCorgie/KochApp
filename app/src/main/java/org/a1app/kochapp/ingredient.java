@@ -8,13 +8,18 @@ import java.io.Serializable;
 
 public class ingredient implements Serializable{
 
-    private String name;
-    private String ammount;
+    public String name;
+    public String ammount;
 
     //generates this ingredient
     ingredient(String name, String ammount){
         this.name = name;
         this.ammount = ammount;
+    }
+    //uninit ingredient
+    ingredient(){
+        this.name = "NO NAME";
+        this.ammount = "NO AMMOUNT";
     }
 
     //returns the ammount

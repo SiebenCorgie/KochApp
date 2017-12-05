@@ -15,7 +15,7 @@ public class AddIngredients extends AppCompatActivity {
     //the displayed list
     public ArrayList<ingredient> ing_list;
     //the current xml file
-    public XmlHandler xml_file;
+    public XmlWriter xml_file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class AddIngredients extends AppCompatActivity {
         //get the xml file name from the intent
         Intent intent = getIntent();
         Bundle message = intent.getExtras();
-        XmlHandler xml_send = (XmlHandler) message.getSerializable(StartRecipe.EXTRA_XML_FILE);
+        XmlWriter xml_send = (XmlWriter) message.getSerializable(StartRecipe.EXTRA_XML_FILE);
         //save it to the global one
         xml_file = xml_send;
 

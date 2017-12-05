@@ -11,12 +11,10 @@
         android:id="@+id/WS_ed_todo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Title.Inverse"
-        app:layout_constraintBottom_toTopOf="@+id/WS_Ex_Todo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,17 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
-    <ExpandableListView
-        android:id="@+id/WS_Ex_Todo"
-        android:layout_width="368dp"
-        android:layout_height="74dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="43dp" />
-
     <Button
         android:id="@+id/WS_Start"
         android:layout_width="wrap_content"
@@ -56,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Title.Inverse"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,5 +61,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WS_te_step" />
+
+    <EditText
+        android:id="@+id/WS_Ex_Todo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WS_ed_todo" />
 
 </android.support.constraint.ConstraintLayout>

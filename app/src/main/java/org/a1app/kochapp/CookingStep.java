@@ -14,4 +14,11 @@ public class CookingStep {
         this.time_for_step = time_for_step;
         this.to_do = to_do;
     }
+
+    //uninit step
+    CookingStep(){
+        this.should_be_done = "NO CONTENT";
+        this.time_for_step = 0;
+        this.to_do = "NOTHING TO DO";
+    }
 }

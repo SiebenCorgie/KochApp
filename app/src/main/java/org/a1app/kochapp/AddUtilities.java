@@ -16,7 +16,7 @@ public class AddUtilities extends AppCompatActivity {
     public ArrayList<String> device_list;
 
     //the xml file
-    XmlHandler xml_file;
+    XmlWriter xml_file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class AddUtilities extends AppCompatActivity {
         //get the xml file name from the intent
         Intent intent = getIntent();
         Bundle message = intent.getExtras();
-        XmlHandler xml_send = (XmlHandler) message.getSerializable(StartRecipe.EXTRA_XML_FILE);
+        XmlWriter xml_send = (XmlWriter) message.getSerializable(StartRecipe.EXTRA_XML_FILE);
         //save it to the global one
         xml_file = xml_send;
 
@@ -69,6 +69,9 @@ public class AddUtilities extends AppCompatActivity {
         //remove the old word
         device_entry_edit.setText("");
     }
+
+
+
 
     //closes the activity
     public void onBack(View v){

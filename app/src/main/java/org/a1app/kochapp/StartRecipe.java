@@ -31,7 +31,7 @@ public class StartRecipe extends AppCompatActivity {
         At this point the xml file should be created and the first part, (the name) should be
         written inside
         TODO*/
-        XmlHandler handler = new XmlHandler(file_name, getApplicationContext());
+        XmlWriter handler = new XmlWriter(file_name, getApplicationContext());
 
         Intent go_to_ingredients = new Intent(this, AddIngredients.class);
         go_to_ingredients.putExtra(EXTRA_XML_FILE, handler);

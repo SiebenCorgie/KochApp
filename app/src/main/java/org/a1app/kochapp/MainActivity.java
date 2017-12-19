@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), "Pressed " + i, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Pressed " + i, Toast.LENGTH_SHORT).show();
                 //load the recipe from the name
                 //start the coking step with the first step
 
@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "File loading failed", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
+
+
                 if (loaded_recipe != null){
                     Toast.makeText(getApplicationContext(), "Name: " + loaded_recipe.getName(), Toast.LENGTH_SHORT).show();
                 }else{

@@ -67,14 +67,14 @@ public class XmlWriter implements Serializable {
         this.appendText("</Recipe>");
     }
 
-    private void startItem(){
-        String add_string = "<item>";
+    private void startItem(String name){
+        String add_string = "<" + name + ">";
         add_string = ident(add_string, 1);
         this.appendText(add_string);
     }
 
-    private void endItem(){
-        String add_string = "</item>";
+    private void endItem(String name){
+        String add_string = "</" + name + ">";
         add_string = ident(add_string, 1);
         this.appendText(add_string);
     }
@@ -89,49 +89,49 @@ public class XmlWriter implements Serializable {
 
     /** adds a name to the recipe **/
     private void addName(String name){
-        this.startItem();
+        this.startItem("RecipeName");
         this.writeId();
 
         this.appendText(ident("<name>" + name + "</name>", 2));
 
-        this.endItem();
+        this.endItem("RecipeName");
     }
 
     /** adds a new ingredient to the xml **/
     public void addingredient(ingredient ing){
         //start the item tag
         //item adder
-        this.startItem();
+        this.startItem("Ingredient");
         this.writeId();
 
         //name
-        this.appendText(ident("<ingredient>" + ing.name() + "</ingredient>", 2));
+        this.appendText(ident("<ingredient_name>" + ing.name() + "</ingredient_name>", 2));
         //amount
         this.appendText(ident("<ammount>" + ing.ammount() + "</ammount>", 2));
 
-        this.endItem();
+        this.endItem("Ingredient");
     }
     
     /** Adds a device to the xml **/
     public void addDevice(String device){
-        this.startItem();
+        this.startItem("Device");
         this.writeId();
 
-        this.appendText(ident("<device>" + device + "</device>", 2));
+        this.appendText(ident("<device_name>" + device + "</device_name>", 2));
 
-        this.endItem();
+        this.endItem("Device");
     }
 
     /** adds a step to the list */
     public void addStep(CookingStep step){
-        this.startItem();
+        this.startItem("Step");
         this.writeId();
 
         this.appendText(ident("<to_be_done>" + step.should_be_done + "</to_be_done>", 2));
         this.appendText(ident("<time>" + step.time_for_step + "</time>", 2));
         this.appendText(ident("<to_do>" + step.to_do + "</to_do>", 2));
 
-        this.endItem();
+        this.endItem("Step");
     }
 
     /** appends text to a file, then adds an page break **/

@@ -1,10 +1,12 @@
 package org.a1app.kochapp;
 
+import java.io.Serializable;
+
 /**
  * Created by siebencorgie on 11/16/17.
  */
 
-public class CookingStep {
+public class CookingStep implements Serializable {
     public String should_be_done;
     public int time_for_step;
     public String to_do;

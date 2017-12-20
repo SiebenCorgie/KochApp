@@ -35,8 +35,10 @@ public class StepAdapter extends ArrayAdapter {
         TextView Todo = (TextView) rowView.findViewById(R.id.TVStep);
 
         //Set the Time text
+
+        String min_string = parent.getResources().getString(R.string.Short_Minutes);
         if (position <= this.step.size() - 1){
-            Time.setText("" + this.step.get(position).time_for_step);
+            Time.setText("" + this.step.get(position).time_for_step+ " " + min_string);
         }
         //Set the todoText
         if (position <= this.step.size() - 1){

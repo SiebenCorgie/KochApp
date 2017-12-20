@@ -10,7 +10,7 @@
     <ListView
         android:id="@+id/IngredientsAndDevices"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="149dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="64dp"

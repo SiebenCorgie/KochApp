@@ -25,9 +25,7 @@
         <activity android:name=".AddUtilities" />
         <activity android:name=".StartRecipe" />
         <activity android:name=".StepWizard" />
-        <activity
-            android:name=".WorkingStep"
-            android:label="@string/title_activity_working_step"></activity>
+        <activity android:name=".WorkingStep"/>
     </application>
 
 </manifest>

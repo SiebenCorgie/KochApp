@@ -15,4 +15,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="CookingAlertTitle">This should be done:</string>
+    <string name="Ok">Ok</string>
+    <string name="Short_Minutes">min</string>
+    <string name="CookingFinshedAlertTitle">Finished Cooking Step!</string>
+    <string name="CookingFinishedMessage">Finished the step</string>
+    <string name="ErrorStepAlreadyUsed">You already did this step!</string>
 </resources>

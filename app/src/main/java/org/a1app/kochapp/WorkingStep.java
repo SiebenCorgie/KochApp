@@ -157,11 +157,11 @@ public class WorkingStep extends AppCompatActivity {
                                         // string resources
                                         String finished_title = WorkingStep.this.getResources().getString(R.string.CookingFinshedAlertTitle);
                                         String finished_message = WorkingStep.this.getResources().getString(R.string.CookingFinishedMessage);
-
+                                        //now start the sound
                                         Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
                                         final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
                                         r.play();
-                                        //Start the dialog
+                                        //and Start the dialog
                                         AlertDialog.Builder OkDia = new AlertDialog.Builder(WorkingStep.this);
                                         OkDia.setTitle(finished_title)
                                                 .setMessage(finished_message + " \"" + recipe.getSteps().get(i).to_do + "\"");
@@ -172,6 +172,7 @@ public class WorkingStep extends AppCompatActivity {
                                                 r.stop();
                                             }
                                         });
+                                        //show the dialog while playing, waiting for the ok
                                         OkDia.show();
                                     }
                                 });

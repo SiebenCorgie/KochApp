@@ -2,6 +2,7 @@ package org.a1app.kochapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -78,19 +79,24 @@ public class MainActivity extends AppCompatActivity {
                     loaded_recipe = recipe;
 
                 } catch (XmlPullParserException e) {
-                    Toast.makeText(getApplicationContext(), "Pullparser failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "File loading failed (XmlPullParserException)", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
+                    return;
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
-                    Toast.makeText(getApplicationContext(), "File loading failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "File loading failed (IO Exception)", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
+                    return;
                 }
 
 
                 if (loaded_recipe != null){
-                    Toast.makeText(getApplicationContext(), "Name: " + loaded_recipe.getName(), Toast.LENGTH_SHORT).show();
+                    //This happens if everything went all right, we don't want to throw anything in this event
+                    //Toast.makeText(getApplicationContext(), "Name: " + loaded_recipe.getName(), Toast.LENGTH_SHORT).show();
                 }else{
+                    //This should not happen (Null for the loaded recipe), but it should be checked.
                     Toast.makeText(getApplicationContext(), "Could not load file :(", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
                 //now send it as extra to the first cooking activity
@@ -100,6 +106,41 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        //Finished the on click listener to
+        // now we also want to share stuff we we long click on a entry, this happens here
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //we get the selected items name and create a "ShareActionProvider" from its file
+                //path.
+
+                File xml_path = null;
+                try {
+                    xml_path = new File(getRecipeDirectory(), getLocalRecipes()[i]);
+                }catch(ArrayIndexOutOfBoundsException r){
+                    //It could be possible that we are using some strange index... should not happen
+                    //but coming from Rust, its better to double check if the syntax doesn't.
+                    Toast.makeText(getApplicationContext(), "Failed to send recipe", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                //If we got no exception the file should be good
+                Uri xml_uri = Uri.fromFile(xml_path);
+
+
+
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/xml");
+                //put the xml into the share thingy
+                share.putExtra(Intent.EXTRA_STREAM, xml_uri);
+
+                //now start the sharing thing
+                startActivity(Intent.createChooser(share, "Share the stuff"));
+
+
+                return true;
+            }
+        });
+
     }
 
     public void addRecipe (View v){

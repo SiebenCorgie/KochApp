@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.commons.io.FileUtils;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -29,6 +30,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Array;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,15 +43,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //First of all we handle any implicit intent. This can happen if the user opened the app
+        // via a "alien" recipe stored somewhere. In this case we'll first copy this file to our
+        // local recipes folder and then proceed as usual.
+        handle_intent(getIntent());
+
+
         //Populate the view with some dumys
         String[] values = this.getLocalRecipes();
 
-        for (int i=0; i<values.length;i++){
+        for (int i = 0; i < values.length; i++) {
             values[i] = values[i].substring(0, values[i].length() - 7);
         }
 
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.simple_list, values);
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.simple_list, values);
         ListView listView = findViewById(R.id.MainList);
         listView.setAdapter(adapter);
 
@@ -93,10 +101,10 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                if (loaded_recipe != null){
+                if (loaded_recipe != null) {
                     //This happens if everything went all right, we don't want to throw anything in this event
                     //Toast.makeText(getApplicationContext(), "Name: " + loaded_recipe.getName(), Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     //This should not happen (Null for the loaded recipe), but it should be checked.
                     Toast.makeText(getApplicationContext(), "Could not load file :(", Toast.LENGTH_SHORT).show();
                     return;
@@ -120,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 File xml_path = null;
                 try {
                     xml_path = new File(getRecipeDirectory(), getLocalRecipes()[i]);
-                }catch(ArrayIndexOutOfBoundsException r){
+                } catch (ArrayIndexOutOfBoundsException r) {
                     //It could be possible that we are using some strange index... should not happen
                     //but coming from Rust, its better to double check if the syntax doesn't.
                     Toast.makeText(getApplicationContext(), "Failed to send recipe", Toast.LENGTH_SHORT).show();
@@ -128,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //If we got no exception the file should be good
                 Uri xml_uri = Uri.fromFile(xml_path);
-
 
 
                 Intent share = new Intent(Intent.ACTION_SEND);
@@ -152,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
 
     /**
      * Gets the current recipes in the ~/Documents/Recepies folder
@@ -182,6 +190,49 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return file;
+    }
+
+    private void handle_intent(Intent intent){
+        String appLinkAction = intent.getAction();
+        Uri appLinkData = intent.getData();
+
+        if (appLinkData != null){
+
+
+            //Copying to local recipe directory, overwriting if necessary
+            File source = new File(appLinkData.getPath());
+            File dest = this.getRecipeDirectory();
+            try{
+                copy(source, dest);
+            }catch (IOException e){
+                Toast.makeText(this, "Failed to copy file!: " + e, Toast.LENGTH_LONG).show();
+            }
+
+        }else{
+            Toast.makeText(this, "Opened as usual...", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    /**
+     * Copyies the file or src to dst via FileUtils. Relevant meme: https://twitter.com/rbanffy/status/950784408482648066
+     * @param src
+     * @param dst
+     * @throws IOException
+     */
+    public void copy(File src, File dst) throws IOException {
+
+        //Create the file in the dst
+        String file_name = src.getName();
+        Toast.makeText(this.getApplicationContext(), "Name: " + file_name, Toast.LENGTH_SHORT).show();
+        File final_dest_file;
+        final_dest_file = new File(dst, file_name);
+
+
+        FileUtils.copyFile(src, final_dest_file);
+
+
+
     }
 
 }

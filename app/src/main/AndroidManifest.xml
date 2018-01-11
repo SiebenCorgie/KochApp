@@ -20,12 +20,25 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.recipe" />
+                <data android:host="*" />
+            </intent-filter>
+
+
+
         </activity>
         <activity android:name=".AddIngredients" />
         <activity android:name=".AddUtilities" />
         <activity android:name=".StartRecipe" />
         <activity android:name=".StepWizard" />
-        <activity android:name=".WorkingStep"/>
+        <activity android:name=".WorkingStep" />
     </application>
 
 </manifest>

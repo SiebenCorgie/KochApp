@@ -21,4 +21,5 @@
     <string name="CookingFinshedAlertTitle">Finished Cooking Step!</string>
     <string name="CookingFinishedMessage">Finished the step</string>
     <string name="ErrorStepAlreadyUsed">You already did this step!</string>
+    <string name="SyncMessage">Choose the location for syncing your recipes!</string>
 </resources>

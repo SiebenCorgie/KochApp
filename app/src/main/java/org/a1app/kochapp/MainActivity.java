@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         //Populate the view with some dumys
         String[] values = this.getLocalRecipes();
 
+        for (int i=0; i<values.length;i++){
+            values[i] = values[i].substring(0, values[i].length() - 7);
+        }
+
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.simple_list, values);
         ListView listView = findViewById(R.id.MainList);
@@ -53,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Toast.makeText(getApplicationContext(), "Pressed " + i, Toast.LENGTH_SHORT).show();
                 //load the recipe from the name
                 //start the coking step with the first step
 
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     //Get the location where the file com from
                     File RecipeLocation = getRecipeDirectory();
                     //Get the file at this location and finally load it
-                    String entry = (String) adapterView.getItemAtPosition(i);
+                    String entry = ((String) adapterView.getItemAtPosition(i)) + ".recipe"; //we append the ending again to get the file name in the filesystem
                     File recipe_xml = new File(RecipeLocation, entry);
 
                     FileInputStream fileInputStream = new FileInputStream(recipe_xml);

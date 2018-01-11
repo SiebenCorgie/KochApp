@@ -22,14 +22,14 @@ public class XmlWriter implements Serializable {
 
     //the directory name for the xml
     public static String recipe_dir_name = "Recipes";
-    private static String file_name = "No_Name.xml";
+    private static String file_name = "No_Name.recipe";
 
     private static int id_counter;
 
 
     /** Contructs a new class by creating a new file with this name **/
     XmlWriter(String name, Context context){
-        this.file_name = name + ".xml";
+        this.file_name = name + ".recipe"; //We append a .recipe file ending to indentify the correct files later when importing from other directorys
         //and init the counter
         this.id_counter = 0;
 
@@ -54,11 +54,7 @@ public class XmlWriter implements Serializable {
         try {
             target_file.createNewFile();
         }catch (Exception e){
-            /* TODO find a nice way
-            Toast.makeText(
-                    this.file_context, "Something went wrong while creating " + file_name, Toast.LENGTH_LONG
-            ).show();
-            */
+            Log.w("Exception: ", e);
         }
     }
 

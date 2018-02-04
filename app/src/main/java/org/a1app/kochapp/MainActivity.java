@@ -35,7 +35,8 @@ import java.lang.reflect.Array;
 
 public class MainActivity extends AppCompatActivity {
     public static final String RECIPEWORKDER = "com.example.myfirstapp.WORKGER";
-
+    //The current list view of this app;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,20 +50,10 @@ public class MainActivity extends AppCompatActivity {
         handle_intent(getIntent());
 
 
-        //Populate the view with some dumys
-        String[] values = this.getLocalRecipes();
-
-        for (int i = 0; i < values.length; i++) {
-            values[i] = values[i].substring(0, values[i].length() - 7);
-        }
-
-
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.simple_list, values);
-        ListView listView = findViewById(R.id.MainList);
-        listView.setAdapter(adapter);
+        this.update_list();
 
         //create the listener
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //load the recipe from the name
@@ -117,9 +108,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         //Finished the on click listener to
         // now we also want to share stuff we we long click on a entry, this happens here
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        this.listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //we get the selected items name and create a "ShareActionProvider" from its file
@@ -157,7 +149,25 @@ public class MainActivity extends AppCompatActivity {
         //open the adding dialog
         Intent intent = new Intent(this, StartRecipe.class);
         startActivity(intent);
+        //After finishing the recipe, update the current list
+        this.update_list();
+    }
 
+    /**
+     * Updates the current list view
+     */
+    private void update_list(){
+        //Populate the view with some dumys
+        String[] values = this.getLocalRecipes();
+
+        for (int i = 0; i < values.length; i++) {
+            values[i] = values[i].substring(0, values[i].length() - 7);
+        }
+
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.simple_list, values);
+        this.listView = findViewById(R.id.MainList);
+        this.listView.setAdapter(adapter);
     }
 
 

@@ -1,4 +1,5 @@
-# KochApp
-A small android app aimed at learning Java and Android.
+## What is this? [EN]
+This is a small app aiming to provide a better cooking experience by handling time management for you.
 
-## Whats the target?
+## Dokumentation [DE]
+Die Dokumentation und Mockups befinden sich in "resources" zusammen mit allem anderen was wir während der Bearbeitung erstellt haben.

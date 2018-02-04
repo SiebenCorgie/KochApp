@@ -108,9 +108,9 @@ Gruppentreffen
 \end_layout
 
 \begin_layout Standard
-Unsere Gruppentreffen fanden, wenn geplant meist Mittwoch in der 5ten Doppelstun
-de im APB statt.
- Abgesehen davon verbringen wir viel zeit zusammen an der Universität weshalb
+Unsere Gruppentreffen fanden, wenn geplant, meist Mittwoch in der 5ten Doppelstu
+nde im APB statt.
+ Abgesehen davon verbringen wir viel Zeit zusammen an der Universität, weshalb
  wir uns darüber hinaus auch zwischendurch oder per 
 \begin_inset Quotes eld
 \end_inset
@@ -133,7 +133,7 @@ So konnten wir uns über den aktuellen Stand der App austauschen, und anstehende
  Erste Skizzen enstanden und die Aufgaben für das weitere Semester wurden
  verteilt (s.
  Punkt 1.1).
- Durch den regelmäßigen Austausch gabe es keine Überraschungen oder ungeklährte
+ Durch den regelmäßigen Austausch gab es keine Überraschungen oder ungeklärte
  Punkte.
  
 \end_layout
@@ -151,7 +151,7 @@ Java
 \end_layout
 
 \begin_layout Itemize
-hardware
+Hardware
 \end_layout
 
 \begin_layout Itemize
@@ -257,7 +257,7 @@ Unter den ersten Ideen waren auch folgende vielversprechende Ansätze, die
  später realisiert zu werden:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Wegebuch für das Klettern im Sächsischen Fels: Passionierte Kletterer dokumentie
 ren ihre Wege, ob im Vorstieg oder Nachstieg.
  Im Elbsandsteingebirge laden über 1000 Gipfel zum Klettern ein.
@@ -274,7 +274,7 @@ r Schwierigkeit der Route wählt.
  Zusatzfunktion einer solchen App.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Mächtige To-Do-Liste: Einfache To-Do-Listen lassen sich mit vielen verschiedenen
  Notiz-Apps anfertigen.
  Auch Kalender, in denen man Aufgaben vermerken kann, werden häufig genutzt.
@@ -295,7 +295,7 @@ gutschreibt
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Schach-Partien mitschreiben: Zum Lernen des Spiels der Könige gibt es mittlerwei
 le auch genügend Apps.
  Wer allerdings noch mit echten Menschen spielt und sich dabei weiter entwickeln
@@ -311,7 +311,7 @@ le auch genügend Apps.
  werden und so lernt man durch seine Fehler.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Zitate speichern: Beim Lesen von Büchern oder Tageszeitung findet man oft
  erhellende, lustige oder sonstwie bemerkenswerte Sätze, die man gerne in
  den eigenen Sprach- und Denkschatz übernimmt.
@@ -328,7 +328,7 @@ Ich habe keine eigenen Gedanken.
  (Quelle leider vergessen - Zitate-App muss her).
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Lern-App wie Vokabel-Trainer: Lernen mit Karteikarten in Karteikartenboxen
  ist eine Wissenschaft für sich.
  Die Vokabel soll erst von der Muttersprache in die Fremdsprache gelernt
@@ -344,7 +344,7 @@ m ins richtige Fach der Box gesteckt.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Das Spiel 
 \begin_inset Quotes eld
 \end_inset
@@ -386,7 +386,7 @@ KochApp/resources/MockUps
 \end_layout
 
 \begin_layout Standard
-Wir hatten auch mal geplant Bilder der Gerichte in ein rezept auf zunehmen,
+Wir hatten auch mal geplant, Bilder der Gerichte in ein Rezept aufzunehmen,
  zwei haben wir auch schon produziert, allerdings haben sie es nicht in
  die App geschaft.
  Sie liegen trotzdem mit in dem Ordner.
@@ -394,6 +394,34 @@ Wir hatten auch mal geplant Bilder der Gerichte in ein rezept auf zunehmen,
 
 \begin_layout Subsection
 Pflichtenheft
+\end_layout
+
+\begin_layout Subsubsection
+Soll
+\end_layout
+
+\begin_layout Itemize
+Alles aus Ist
+\end_layout
+
+\begin_layout Standard
+Nicht geschafft und andere Ideen:
+\end_layout
+
+\begin_layout Itemize
+Bilder zum teilen und als Vorschau des Rezepts
+\end_layout
+
+\begin_layout Itemize
+Sprachausgabe hatten wir auch mal angedacht
+\end_layout
+
+\begin_layout Itemize
+Schnittstelle zur Einkaufsapp aus Ivans Gruppe
+\end_layout
+
+\begin_layout Itemize
+Piktogramme für Zutaten/Geräte
 \end_layout
 
 \begin_layout Subsubsection
@@ -438,13 +466,13 @@ Multithreaded timing der einzelnen Stufen
 \end_layout
 
 \begin_layout Enumerate
-Wecker nach ablauf (Verbesserung: Handy vibriert nicht -> Wenn lautlos eingestel
+Wecker nach Ablauf (Verbesserung: Handy vibriert nicht -> Wenn lautlos eingestel
 lt kann man den Wecker verpassen Verbesserung: Vibrieren, Warnung bei lautlos)
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Teilen eines rezeptes per long-click in der Rezeptliste
+Teilen eines Rezeptes per long-click in der Rezeptliste
 \end_layout
 
 \begin_layout Enumerate
@@ -465,7 +493,7 @@ Recipes
 \begin_inset Quotes erd
 \end_inset
 
- Ordner auf dem Telfon unter Hauptspeicher/Dokumente/Recepies
+ Ordner auf dem Telefon unter Hauptspeicher/Dokumente/Recepies
 \begin_inset Quotes erd
 \end_inset
 
@@ -473,39 +501,11 @@ Recipes
 \end_layout
 
 \begin_layout Subsubsection
-Soll
-\end_layout
-
-\begin_layout Itemize
-Alles aus Ist
-\end_layout
-
-\begin_layout Standard
-Nicht geschafft und andere Ideen:
-\end_layout
-
-\begin_layout Itemize
-Bilder zum teilen und als Vorschau des Rezepts
-\end_layout
-
-\begin_layout Itemize
-Sprachausgabe hatten wir auch mal angedacht!
-\end_layout
-
-\begin_layout Itemize
-Schnittstelle zur Einkaufsapp aus Ivans Gruppe
-\end_layout
-
-\begin_layout Itemize
-Piktogramme für Zutaten/Geräte
-\end_layout
-
-\begin_layout Subsubsection
 Verbesserungen
 \end_layout
 
 \begin_layout Itemize
-Vibrieren da man den wecker im 
+Vibrieren, da man den Wecker im 
 \begin_inset Quotes eld
 \end_inset
 
